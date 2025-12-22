@@ -4,10 +4,13 @@ import "./FiltroLocalizacao.css";
 type Dados = {
   [regiao: string]: {
     [estado: string]: string[];
-  };
+  }; 
+};
+type Props = {
+  onSelecionarCidade: (cidade: string) => void;
 };
 
-export default function FiltroLocalizacao() {
+export default function FiltroLocalizacao({ onSelecionarCidade }: Props) {
   const [dados, setDados] = useState<Dados>({});
   const [regiaoAberta, setRegiaoAberta] = useState(false);
   const [estadoAberto, setEstadoAberto] = useState(false);
@@ -18,7 +21,7 @@ export default function FiltroLocalizacao() {
   const [cidadeSelecionada, setCidadeSelecionada] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8081/api/localizacoes")
+    fetch("http://localhost:8081/api/localizacao/listarcidadesporestado")
       .then((res) => res.json())
       .then((data: Dados) => setDados(data))
       .catch((err) => console.error(err));
@@ -35,11 +38,13 @@ export default function FiltroLocalizacao() {
     setEstadoSelecionado(e);
     setEstadoAberto(false);
     setCidadeSelecionada(null);
+  
   };
 
   const handleSelectCidade = (c: string) => {
     setCidadeSelecionada(c);
     setCidadeAberta(false);
+    onSelecionarCidade(c);
   };
   return (
     <div className="filtro-container">
