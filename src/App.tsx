@@ -23,7 +23,7 @@ function App() {
     <div className="container">
       <h1>Probabilidade de Chuva</h1>
       <FiltroLocalizacao onSelecionarCidade={carregarDados} />
-      {cidade && <h2>{cidade}</h2>}
+      {cidade && <h2>Média de Chuvas em {cidade}</h2>}
       {dados.length > 0 && <GraficoChuva dados={dados} />}
     </div>
   );

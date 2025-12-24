@@ -3,7 +3,7 @@ export async function buscarDadosCidadePorAno(
   ano: number
 ) {
   const res = await fetch(
-    `http://localhost:8081/api/cidade/classificacao?nome=${cidade}&ano=${ano}`
+    `http://localhost:8081/api/cidade/classificacaomedia?nome=${cidade}`
   );
 
   if (!res.ok) {
