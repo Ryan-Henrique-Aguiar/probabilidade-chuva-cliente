@@ -29,23 +29,29 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Probabilidade de Chuva</h1>
+      <h1>Escolha a Cidade</h1>
       <FiltroLocalizacao onSelecionarCidade={carregarDados} />
+      
+      <div className='container-dados-visualizacao'>
+      
+      <div className='container-grafico'>
       {cidade && <h2>Média de Chuvas em {cidade}</h2>}
       {dados.length > 0 && <GraficoChuva dados={dados} />}
-    <div>
+      </div>
+
+    <div className="container-probabilidade">
       {cidade&&<PrevisaoSimples cidade={cidade} setDiaInicial={setDiaInicial} 
   setMesInicial={setMesInicial}/>}
-      </div>
-      {cidade && diaInicial && mesInicial && dadosCompletos.length > 0 && (
+  {cidade && diaInicial && mesInicial && dadosCompletos.length > 0 && (
         <PrevisaoMedia  
           dados={dadosCompletos} 
           diaInicial={diaInicial} 
           mes={mesInicial} 
         />
       )}
-
-    </div>
+      </div>
+      </div>
+      </div>
   );
 }
 

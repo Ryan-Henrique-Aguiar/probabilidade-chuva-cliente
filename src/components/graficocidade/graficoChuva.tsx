@@ -23,7 +23,7 @@ export default function GraficoChuva({ dados }: Props) {
   }
 
   return (
-    <ResponsiveContainer width="200%" height={500}>
+    <ResponsiveContainer width="100%" height={500}>
       <LineChart data={dados}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="data" />

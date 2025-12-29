@@ -1,0 +1,53 @@
+/* Estilo geral da seção */
+.container-cards {
+  display:flex; /* Para colocar os cards lado a lado */
+  gap: 7px; /* Espaçamento entre os cards */
+  flex-wrap: wrap; /* Para quebrar a linha se não couberem */
+  justify-content: center; /* Centraliza os cards */
+  margin-top: 20px;
+
+}
+
+/* Estilo do Card Individual */
+.cartao-dia {
+  background-color: #ffffff; /* Fundo branco ou claro */
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para levantar o card */
+  padding: 10px;
+
+  width: 120px; /* Largura fixa do card */
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Organiza os itens verticalmente */
+  align-items: center;
+  transition: transform 0.2s; /* Animação suave ao passar o mouse */
+  border: 1px solid #e0e0e0; /* Borda sutil */
+}
+
+/* Efeito ao passar o mouse (hover) */
+.cartao-dia:hover {
+  transform: translateY(-5px); /* Move o card um pouco para cima */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+}
+
+/* Estilo para a imagem dentro do card */
+.cartao-dia img {
+  width: 40px; /* Aumente o tamanho da imagem */
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* Estilo para os textos (data e classificação) */
+.data-classificacao {
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #333333;
+}
+
+/* Estilo para os detalhes (total e max horário) */
+.detalhes {
+  font-size: 0.8em;
+  color: #666666;
+  margin-top: 8px;
+}

@@ -1,0 +1,29 @@
+/* Container que abriga o gráfico e as previsões */
+.container-dados-visualizacao {
+  display: grid;
+  /* Define duas colunas: 
+     2fr (2/3 da largura) para o gráfico à esquerda (container-grafico)
+     1fr (1/3 da largura) para os cards/previsões à direita (container-probabilidade) */
+  grid-template-columns: 2fr 1fr; 
+  gap: 30px; /* Espaçamento entre as duas colunas */
+  margin-top: 20px;
+  justify-content: left;
+}
+
+/* Coluna da Esquerda (Gráfico) */
+.container-grafico {
+  /* ... estilos de padding, background, etc. ... */
+}
+
+/* Coluna da Direita (Cards de Previsão) */
+.container-probabilidade {
+  display: flex;
+  flex-direction: column; /* Para empilhar os cards (PrevisaoSimples e PrevisaoMedia) */
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .container-dados-visualizacao {
+    /* Em telas pequenas, volta para uma única coluna empilhada */
+    grid-template-columns: 1fr; 
+  }
+}
