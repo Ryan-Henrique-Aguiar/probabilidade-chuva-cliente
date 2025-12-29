@@ -1,6 +1,5 @@
 export async function buscarDadosCidadePorAno(
   cidade: string,
-  ano: number
 ) {
   const res = await fetch(
     `http://localhost:8081/api/cidade/classificacaomedia?nome=${cidade}`

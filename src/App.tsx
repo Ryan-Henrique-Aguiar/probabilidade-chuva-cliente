@@ -5,6 +5,8 @@ import FiltroLocalizacao from "./components/filtrolocalizacao/FiltroLocalizacao"
 import GraficoChuva from './components/graficocidade/graficoChuva';
 import { buscarDadosCidadePorAno } from './api/cidade.api';
 import type { DadoChuva } from './components/types/chuva';
+import PrevisaoSimples from './components/previsoes/simples';
+
 
 
 
@@ -14,8 +16,7 @@ function App() {
 
   async function carregarDados(cidadeSelecionada: string) {
     setCidade(cidadeSelecionada);
-    const ano = 2025;
-    const resposta = await buscarDadosCidadePorAno(cidadeSelecionada, ano);
+    const resposta = await buscarDadosCidadePorAno(cidadeSelecionada);
     setDados(resposta);
   }
 
@@ -25,6 +26,9 @@ function App() {
       <FiltroLocalizacao onSelecionarCidade={carregarDados} />
       {cidade && <h2>Média de Chuvas em {cidade}</h2>}
       {dados.length > 0 && <GraficoChuva dados={dados} />}
+    <div>
+      {cidade&&<PrevisaoSimples cidade={cidade}/>}
+      </div>
     </div>
   );
 }
