@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 
 type Props = {
   cidade: string;
+  setDiaInicial: (dia: number) => void;
+  setMesInicial: (mes: number) => void;
 };
 
-export default function PrevisaoSimples({ cidade }: Props) {
+export default function PrevisaoSimples({ cidade, setDiaInicial, setMesInicial }: Props) {
   const [diaselecionado, setdiaselecionado] = useState<number>(1);
   const [messelecionado, setmesselecionado] = useState<number>(1);
   const [probabilidade, setprobabilidade] = useState<number | null>(null);
@@ -27,6 +29,14 @@ export default function PrevisaoSimples({ cidade }: Props) {
       })
       .finally(() => setCalcular(false)); // reseta o gatilho
   }, [diaselecionado, messelecionado, calcular, cidade]);
+  
+  const handleCalcular = () => {
+    setCalcular(true);
+    if (diaselecionado && messelecionado) {
+      setDiaInicial(diaselecionado);
+      setMesInicial(messelecionado);
+    }
+  };
 
   return (
     <div>
@@ -51,7 +61,8 @@ export default function PrevisaoSimples({ cidade }: Props) {
         maxLength={2}
     />
 
-    <button onClick={() => setCalcular(true)}>✔</button>
+    <button onClick={handleCalcular}>✔</button>
+
     
 
     
