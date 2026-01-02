@@ -3,10 +3,12 @@ import { useState } from 'react';
 import './App.css'
 import FiltroLocalizacao from "./components/filtrolocalizacao/FiltroLocalizacao";
 import GraficoChuva from './components/graficocidade/graficoChuva';
-import { buscarDadosCidadePorAno } from './api/cidade.api';
+import { buscarDadosCidadePorAno, buscarDadosTemperaturaCidadePorAno } from './api/cidade.api';
 import {type DadoChuvaCompleto, type DadoChuva } from './components/types/chuva';
 import PrevisaoSimples from './components/previsoes/simples';
 import PrevisaoMedia from './components/previsoes/Media';
+import PrevisaoTemperaturaUmidade from './components/previsoes/MediaTemperatura';
+import type { DadoTemperaturaUmidade } from './components/types/temperaturaUmidade';
 
 
 
@@ -16,6 +18,8 @@ function App() {
     const [dados, setDados] = useState<DadoChuva[]>([]);
   const [cidade, setCidade] = useState<string | null>(null);
 
+  const [dadosTemperaturaUmidade, setdadosTemperaturaUmidade] = useState<DadoTemperaturaUmidade[]>([]);
+
   const [diaInicial, setDiaInicial] = useState<number | null>(null);
   const [mesInicial, setMesInicial] = useState<number | null>(null);
 
@@ -24,7 +28,9 @@ function App() {
     const resposta = await buscarDadosCidadePorAno(cidadeSelecionada);
     setDados(resposta);
     setDadosCompletos(resposta)
-  
+    
+    const repostaTempUmid = await buscarDadosTemperaturaCidadePorAno(cidadeSelecionada);
+    setdadosTemperaturaUmidade(repostaTempUmid);
   }
 
   return (
@@ -48,6 +54,10 @@ function App() {
           diaInicial={diaInicial} 
           mes={mesInicial} 
         />
+        
+      )}
+      {cidade&&diaInicial&&mesInicial&&dadosTemperaturaUmidade.length > 0 &&(
+        <PrevisaoTemperaturaUmidade dados={dadosTemperaturaUmidade} diaInicial={diaInicial} mes={mesInicial}/>
       )}
       </div>
       </div>

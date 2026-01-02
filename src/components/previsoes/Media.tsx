@@ -1,5 +1,5 @@
 import type { DadoChuvaCompleto } from "../types/chuva";
-import { imagensCilma } from "../cilma/imagens";
+import { imagensClima } from "../clima/imagens";
 import './cards.css'
 
 type Props = {
@@ -11,24 +11,24 @@ type Props = {
 function getImagemClima(classificacao: string) {
   switch (classificacao.toLowerCase()) {
     case "sem chuva":
-      return imagensCilma.sol;
+      return imagensClima.sol;
     case "parcialmente nublado":
-        return imagensCilma.nublado;
+        return imagensClima.nublado;
     case "chuva fraca":
-      return imagensCilma.chuvaesol;
+      return imagensClima.chuvaesol;
 
     case "chuva moderada":
-      return imagensCilma.chuvaesol;
+      return imagensClima.chuvaesol;
 
     case "chuva forte":
-        return imagensCilma.chuvamoderada
+        return imagensClima.chuvamoderada
 
     case "chuva muito forte":
-      return imagensCilma.tempestade;
+      return imagensClima.tempestade;
 
 
     default:
-      return imagensCilma.sol; // imagem padrão
+      return imagensClima.sol; // imagem padrão
   }
 }
 
