@@ -46,19 +46,22 @@ function App() {
       </div>
 
     <div className="container-probabilidade">
-      {cidade&&<PrevisaoSimples cidade={cidade} setDiaInicial={setDiaInicial} 
-  setMesInicial={setMesInicial}/>}
-  {cidade && diaInicial && mesInicial && dadosCompletos.length > 0 && (
+    {cidade && <PrevisaoSimples cidade={cidade} setDiaInicial={setDiaInicial} setMesInicial={setMesInicial}/>}
+
+    {cidade && diaInicial && mesInicial && dadosCompletos.length > 0 &&
+      <div className="container-cards-combined">
         <PrevisaoMedia  
           dados={dadosCompletos} 
           diaInicial={diaInicial} 
           mes={mesInicial} 
         />
-        
-      )}
-      {cidade&&diaInicial&&mesInicial&&dadosTemperaturaUmidade.length > 0 &&(
-        <PrevisaoTemperaturaUmidade dados={dadosTemperaturaUmidade} diaInicial={diaInicial} mes={mesInicial}/>
-      )}
+        <PrevisaoTemperaturaUmidade 
+          dados={dadosTemperaturaUmidade} 
+          diaInicial={diaInicial} 
+          mes={mesInicial}
+        />
+      </div>
+    }
       </div>
       </div>
       </div>

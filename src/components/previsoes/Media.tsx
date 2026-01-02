@@ -46,7 +46,7 @@ export default function PrevisaoMedia({ dados, diaInicial, mes }: Props) {
   const cincoDias = indiceInicial >= 0 ? dados.slice(indiceInicial, indiceInicial + 5) : [];
 
   return (
-    <div className="container-cards">
+    <div className="container-cards-clima">
       
       {cincoDias.map((dado) => {
         const data = new Date(dado.data);

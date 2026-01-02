@@ -1,6 +1,7 @@
 
 import {imagensTemperatura, imagensUmidade } from "../clima/imagens";
 import type { DadoTemperaturaUmidade } from "../types/temperaturaUmidade"
+import './cards.css'
 
 type Props = {
     dados: DadoTemperaturaUmidade[];
@@ -36,20 +37,20 @@ export default function PrevisaoTemperaturaUmidade({dados,diaInicial,mes}:Props)
   // Pegar os 5 dias consecutivos a partir do índice encontrado
   const cincoDias = indiceInicial >= 0 ? dados.slice(indiceInicial, indiceInicial + 5) : [];
   return (
-    <div className="container-cards">
+    <div className="container-cards-temperatura-umidade">
       
       {cincoDias.map((dado) => {
         const data = new Date(dado.data);
         const diaStr = String(data.getDate()).padStart(2, "0");
         const mesStr = String(data.getMonth() + 1).padStart(2, "0");
 
-        const temperatura = String(dado.tempMedia)
+        const temperatura = dado.tempMedia
         const imagemTemperatura = getImagemTemperatura(dado.tempMedia)
 
-        const umidade = String(dado.umdMedia)
+        const umidade = dado.umdMedia
         const imagemUmidade = imagensUmidade.umidade
         return (
-            <div key={dado.data} className="cartao-dia">
+            <div key={dado.data} className="cartao-dia-temperatura-umidade">
                 {/* Imagem do Clima (em cima) */}
                 <img
                 src={imagemTemperatura}
@@ -62,11 +63,11 @@ export default function PrevisaoTemperaturaUmidade({dados,diaInicial,mes}:Props)
                 <span className="data-classificacao">
                 {diaStr}/{mesStr}
                 </span>
-                <span className="data-classificacao">{temperatura}</span>
+                <span className="data-classificacao">{temperatura.toFixed(1)}°</span>
                 
                 {/* Detalhes (pequenos) */}
-                <span className="detalhes">
-                <img src={imagemUmidade} alt="Icon imagem umidade" style={{width:"20px",height:"20px"}} /> {umidade}%
+                <span className="detalhes2">
+                <img src={imagemUmidade} alt="Icon imagem umidade" style={{width:"25px",height:"25px"}} /> {umidade.toFixed(1)}%
                 </span>
                 
             </div>

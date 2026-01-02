@@ -10,7 +10,7 @@ import media from"../../assets/images/temperatura/temperatura-media.png"
 import alta from"../../assets/images/temperatura/temperatura-alta.png"
 import muitoAlta from"../../assets/images/temperatura/temperatura-muitoalta.png"
 
-import umidade from"../../assets/images/temperatura/temperatura-muitoalta.png"
+import umidade from"../../assets/images/umidade/umidade.png"
 
 
 export const imagensClima  = {
