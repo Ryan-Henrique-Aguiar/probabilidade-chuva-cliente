@@ -7,13 +7,9 @@
   grid-template-columns: 2fr 1fr; 
   gap: 30px; /* Espaçamento entre as duas colunas */
   margin-top: 20px;
-  justify-content: left;
+  justify-content: leftq;
 }
 
-/* Coluna da Esquerda (Gráfico) */
-.container-grafico {
-  /* ... estilos de padding, background, etc. ... */
-}
 
 /* Coluna da Direita (Cards de Previsão) */
 .container-probabilidade {

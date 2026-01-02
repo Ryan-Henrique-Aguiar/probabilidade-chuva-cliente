@@ -12,7 +12,8 @@ function getImagemClima(classificacao: string) {
   switch (classificacao.toLowerCase()) {
     case "sem chuva":
       return imagensCilma.sol;
-
+    case "parcialmente nublado":
+        return imagensCilma.nublado;
     case "chuva fraca":
       return imagensCilma.chuvaesol;
 
@@ -24,6 +25,7 @@ function getImagemClima(classificacao: string) {
 
     case "chuva muito forte":
       return imagensCilma.tempestade;
+
 
     default:
       return imagensCilma.sol; // imagem padrão
