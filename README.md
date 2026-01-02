@@ -1,73 +1,39 @@
-# React + TypeScript + Vite
+# Previsão de Chuva e Temperatura (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
+Este projeto é o **frontend** da aplicação de previsão de chuva e temperatura, desenvolvido em **React** com **Vite** e **TypeScript**.  
 
-Currently, two official plugins are available:
+O frontend consome os dados do backend (Java + Spring Boot), processados a partir de arquivos CSV do **INMET**, e apresenta:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Gráficos de temperatura e chuva média ao longo do ano.
+- Probabilidade de chuva nos próximos 5 dias.
+- Visualização clara e interativa dos dados meteorológicos.
 
-## React Compiler
+O uso de **TypeScript** garante maior robustez do código e facilita a manutenção.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
+- **React** (biblioteca para construção da interface)
+- **Vite** (bundler e dev server rápido)
+- **TypeScript** (tipagem estática para segurança e legibilidade)
+- **Recharts** (para gráficos interativos)
+- **Fetch API / Axios** (para consumir os endpoints do backend)
+- **CSS / SCSS** (estilização)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Funcionamento
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. **Consumo da API**
+   - O frontend faz requisições para o backend via endpoints REST:
+     - Média e classificação de chuva
+     - Probabilidade de chuva em 5 dias
+     - Média de temperatura e umidade
+   - Dados recebidos são tipados com **interfaces TypeScript** e exibidos dinamicamente nos gráficos.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Visualização**
+   - **Gráficos de linha** mostrando médias de chuva e temperatura ao longo do ano.
+   - **Indicadores de probabilidade** para os próximos 5 dias.
+   - Interface simples, clara e responsiva.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
